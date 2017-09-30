@@ -1,3 +1,5 @@
+;; Emacs Lisp Tutorial 01: Introduction
+;;
 ;; This file is a tutorial for Emacs Lisp. To work through the
 ;; tutorial, load it into Emacs and start reading.
 ;;
