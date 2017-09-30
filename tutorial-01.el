@@ -100,18 +100,36 @@
 ;; argument and convert it to string representation if it has to. The
 ;; integer specifiers (%d, %x, %o, etc.) require numeric arguments.
 ;;
+;; You can learn more about the message function by reading Emacs'
+;; help page about it. To access documentation for message, evaluate
+;; this:
+
+(describe-function 'message)
+
+;; The way message works is by calling the function "format" to
+;; process the format string and arguments, then writing the result in
+;; the minibuffer. You can get more details about the various format
+;; specifiers (%s, %d, etc.) by reading the help info for format:
+
+(describe-function 'format)
+
+;; The %S specifier prints any Lisp object as an s-expression
+;; ("symbolic expression"). This may be useful for deducing what is
+;; happening when code gets confusing.
 
 (message "%S" (list 1 2 3))
 
-;; The %S specifier prints any Lisp object as an s-expression. This
-;; may be useful for deducing what is happening when code gets
-;; confusing.
-;;
 ;; Now check out your buffer list, <electric-buffer-list> (I use C-x
 ;; C-b). Notice the buffer named "*Messages*". If you open it (just
-;; scroll to it and hit RET), you'll see all the messages that we've
-;; generated so far. Sometimes it's hard to see what's going on
-;; just looking at the message line if you need to report several
-;; pieces of information in a row since the message line can only show
-;; one message at a time. The *Messages* buffer shows the history so
-;; you can see all the messages that have been produced.
+;; position the cursor on it and hit RET), you'll see all the messages
+;; that we've generated so far. Sometimes it's hard to see what's
+;; going on with just the minibuffer, especially if you need to report
+;; several pieces of information in a row, since the minibuffer can
+;; only show one message at a time. The *Messages* buffer shows the
+;; history so you can see all the messages that have been produced
+;; since Emacs started.
+;;
+;; To continue the tutorial, open tutorial-02.el. Evaluating the
+;; following form will do it.
+
+(find-file "tutorial-02.el")
