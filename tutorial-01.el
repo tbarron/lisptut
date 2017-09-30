@@ -46,38 +46,29 @@
 (message "Hello, world!")
 
 ;; Typing "eval-region" every time we want to run something is not
-;; convenient. We can bind it to a keystroke to make it easier. Select
-;; the next line and run it. After that, you'll be able to run
-;; eval-region by just typing Escape r
+;; convenient. We can bind eval-region to a keystroke to make this
+;; process easier. Evaluate the following form (i.e., select it and
+;; <eval-region> again). After that, you'll be able to run eval-region
+;; by just typing Escape r
 
 (global-set-key "\M-r" 'eval-region)
 
-;; In the line above, "\M-r" tells Lisp that we want to bind the
-;; function eval-region to the keystroke sequence Escape, r. Later in
-;; this tutorial, we'll use this syntax to denote keystroke sequences.
-;; The string "\C-t" means Control-t. That is, hold the Control button
-;; while pressing the t key.
+;; Of course, if you already have eval-region bound to some other
+;; keystroke sequence, you can just use that.
 ;;
-;; The process of selecting a form and running eval-region on it is
-;; called "evaluating" the form. From now on, when I want you to
-;; select some lines and call eval-region, I'll just say something
-;; like, "Evaluate the following form." That means that you should
-;; select all the lines of the form, including both the beginning and
-;; ending parentheses and then hit \M-r.
-;;
-;; The message function is very powerful. Let's look it at some more.
-;; It will let us see what's going on with our code. Evaluate the form
-;; below and we'll talk about what it does
+;; The message function is very powerful. Let's look it at it a little
+;; more closely. It will let us see what's going on with our code.
+;; Evaluate the form below and we'll talk about what it does
 
 (message "%s %s %s %s %d" "now" "is" "the" "time" 13)
 
-;; You should have seen "now is the time 13" in your message line. The
-;; first argument to message (the first string after the word
-;; "message") is the FORMAT string. It contains items like %s and %d.
-;; %s means format a subsequent argument as a string. %d means format
-;; a subsequent argument as an integer. This will let you display the
-;; contents of variables and the results of calculations as your code
-;; is running to identify and correct problems.
+;; Evaluating this should put "now is the time 13" in your message
+;; line. The first argument to message (the first string after the
+;; word "message") is the FORMAT string. It contains items like %s and
+;; %d. %s means format a subsequent argument as a string. %d means
+;; format a subsequent argument as an integer. This will let you
+;; display the contents of variables and the results of calculations
+;; as your code is running to identify and correct problems.
 ;;
 ;; Here's another form to evaluate
 
