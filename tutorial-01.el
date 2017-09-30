@@ -78,9 +78,9 @@
 ;; doesn’t match argument type". This is an error message. We told
 ;; message to expect an integer (%d) but then we gave it a string
 ;; ("foo"). As a result, message is telling us, "Those don't match up.
-;; Try again, dude."
-
-
-
+;; Try again, dude." Generally the %s specifier will take any argument
+;; and convert it to string representation if it has to. The integer
+;; specifiers (%d, %x, %o, etc.) require numeric arguments.
+;;
 
 
