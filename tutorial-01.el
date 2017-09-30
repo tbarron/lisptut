@@ -129,7 +129,14 @@
 ;; history so you can see all the messages that have been produced
 ;; since Emacs started.
 ;;
-;; To continue the tutorial, open tutorial-02.el. Evaluating the
+;; In this file, we've started learning how to communicate with Emacs
+;; Lisp, to get it to do our bidding and report back to us about
+;; what's going on using the <message> function. We've also learned
+;; how to bind keystroke sequences to Emacs commands and how to ask
+;; Emacs for information about its functions.
+;;
+;; To continue the tutorial, open tutorial-02.el. If all the tutorial
+;; files are available in the current directory, evaluating the
 ;; following form will do it.
 
 (find-file "tutorial-02.el")
