@@ -35,26 +35,31 @@
 ;; We'll also use the notation "<FUNCTION-NAME>" to mean "do whatever
 ;; you have to to run function FUNCTION-NAME." That might be hitting a
 ;; keystroke sequence you have bound to the function or running
-;; execute-extended-command (I have it bound to M-x) and typing the
-;; name of the function. That is, <execute-extended-command> will open
-;; a prompt and let you type the name of a function to run.
+;; execute-extended-command (normally it is bound to M-x) and typing
+;; the name of the function. That is, <execute-extended-command>
+;; (usually hitting Escape then X) will open a prompt and let you type
+;; the name of a function you want to run.
 ;;
-;; You can run Lisp forms in this file by selecting the form and doing
-;; <eval-region>. Doing this is called "evaluating the form". A Lisp
-;; form is a string in parentheses like the "Hello world" line below.
-;;
-;; Here's one way to evaluate the "Hello, world" form below:
-;;
-;;  - <set-mark> at the beginning of the "Hello, world" line (I would
-;;    type M-space to <set-mark>),
-;;  - navigate to the end of the line (C-e),
-;;  - and type M-x "eval-region".
-;;
-;; The result should be "Hello, world!" displayed in the message line
-;; at the bottom of your window.
+;; With this file open in Emacs, you can run the Lisp forms by
+;; positioning the cursor after the final parenthesis and firing
+;; <eval-last-sexp>. Doing this is called "evaluating the form" or
+;; "evaluating the expression". A Lisp form is a string in parentheses
+;; like the "Hello world" line below.
 
 (message "Hello, world!")
 
+;; Here's one way to evaluate the "Hello, world" form:
+;;
+;;  - position the cursor after the ")" at the end of the line
+;;  - type M-x "eval-last-sexp".
+;;
+;; The result should be "Hello, world!" displayed in the minibuffer
+;; (the message line at the bottom of your window).
+;;
+;; If you haven't monkeyed with your key bindings, you may find that
+;; <eval-last-sexp> is already (or still) bound to C-xC-e. If so, you
+;; can skip the next few paragraphs about rebinding the key sequence.
+;;
 ;; Typing "eval-region" every time we want to run something is not
 ;; convenient. We can bind eval-region to a keystroke to make this
 ;; process easier. Evaluate the following form (i.e., select it and
