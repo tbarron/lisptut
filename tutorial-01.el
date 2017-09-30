@@ -60,16 +60,18 @@
 ;; <eval-last-sexp> is already (or still) bound to C-xC-e. If so, you
 ;; can skip the next few paragraphs about rebinding the key sequence.
 ;;
-;; Typing "eval-region" every time we want to run something is not
-;; convenient. We can bind eval-region to a keystroke to make this
-;; process easier. Evaluate the following form (i.e., select it and
-;; <eval-region> again). After that, you'll be able to run eval-region
-;; by just typing Escape r
+;; Typing "eval-last-sexp" every time we want to run something is
+;; going to get tiresome pretty quickly. We can bind the function to a
+;; keystroke to make the process easier. Evaluate the following form
+;; (i.e., position after the last paren and <eval-last-sexp> again).
+;; After that, you'll be able to <eval-last-sexp> by just typing the
+;; C-xC-e keystroke sequence.
 
-(global-set-key "\M-r" 'eval-region)
+(global-set-key "\C-x\C-e" 'eval-last-sexp)
 
-;; Of course, if you already have eval-region bound to some other
-;; keystroke sequence, you can just use that.
+;; Of course, if you already have eval-last-sexp bound to some other
+;; keystroke sequence, or you'd prefer something other than C-xC-e,
+;; you can use that.
 ;;
 ;; The message function is very powerful. Let's look it at it a little
 ;; more closely. It will let us see what's going on with our code.
@@ -83,7 +85,8 @@
 ;; %d. %s means format a subsequent argument as a string. %d means
 ;; format a subsequent argument as an integer. This will let you
 ;; display the contents of variables and the results of calculations
-;; as your code is running to identify and correct problems.
+;; as your code is running to identify and correct problems. If you've
+;; used the printf() function in C, this will look fairly familiar.
 ;;
 ;; Here's another form to evaluate
 
