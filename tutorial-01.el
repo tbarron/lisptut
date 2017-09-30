@@ -88,27 +88,18 @@
 ;; as your code is running to identify and correct problems. If you've
 ;; used the printf() function in C, this will look fairly familiar.
 ;;
-;; Here's another form to evaluate
+;; Here's another form to evaluate. It will start the debugger with
+;; the error message "Format specifier doesn't match argument type".
+;; Just hit "q" to return here from the debugger.
 
 (message "%d" "foo")
 
-;; The expected result in the message line is "Format specifier
-;; doesn’t match argument type". This is an error message. We told
-;; message to expect an integer (%d) but then we gave it a string
-;; ("foo"). As a result, message is telling us, "Those don't match up.
-;; Try again, dude." Generally the %s specifier will take any argument
-;; and convert it to string representation if it has to. The integer
-;; specifiers (%d, %x, %o, etc.) require numeric arguments.
+;; We told message to expect an integer (%d) but then we gave it a
+;; string ("foo"). As a result, message is telling us, "Those don't
+;; match up. Try again." Generally the %s specifier will take any
+;; argument and convert it to string representation if it has to. The
+;; integer specifiers (%d, %x, %o, etc.) require numeric arguments.
 ;;
-;; You can learn more about the message function by reading emacs'
-;; help page about it. To access documentation on a function, use the
-;; M-h-f FUNCTION keystroke sequence (or whatever you may have
-;; remapped it to). The documentation will open in a new buffer.
-;;
-;; The way message works is by calling function format to process the
-;; format string and arguments, then writing the result in the message
-;; line. You can get more details about the various format specifiers
-;; (%s, %d, etc.) by reading the help info for format (M-h-f "format").
 
 (message "%S" (list 1 2 3))
 
