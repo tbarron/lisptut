@@ -81,5 +81,56 @@
 ;;
 ;; SELECTION, the third control structure provides for following
 ;; different pathways of control.
+;;
+;; In a sense, we've already seen an example of selection at the top
+;; of the while loop. If the first expression after while evaluates to
+;; true ('t in Lisp), the next iteration of the body takes place. If
+;; the expression evaluates to false (nil or () in Lisp), control
+;; falls to after the end of the while expression.
+;;
+;; More generally, selection between two paths is implemented with the
+;; if form:
 
-(if 
+(progn
+  (setq count-list '("ten ..." "nine ..." "eight ..."
+                     "seven ..." "six ..." "five ..."
+                     "four ..." "three ..." "two ..." "one ..."))
+  (setq direction "down")
+  (setq direction "up")
+
+  (if (string= direction "up")
+      (setq count-list (reverse count-list)))
+
+  (while (setq count (car count-list))
+    (setq count-list (cdr count-list))
+    (message "%s" count)
+    (sleep-for 1.0)))
+
+;; This example uses the same basic while loop as the iteration
+;; example above to cycle through the count elements in the list.
+;; However, in this case we have the option of reversing them first so
+;; the count goes from low to high rather than from high to low.
+;;
+;; You can add a semicolon in front of '(setq direction "up")' to see
+;; the count go from ten to one.
+;;
+;; The <if> form takes its first argument as a test. If it evaluates
+;; to true (anything other than nil), the second argument is
+;; evaluated. If the first argument evaluates to nil, the second
+;; argument is skipped and the third and following arguments, if any,
+;; are evaluated.
+;;
+;; This example also uses <string=>, which tests whether two strings
+;; have identical contents.
+;;
+;; In this file, we have looked at the three basic control structures
+;; of software -- sequence, iteration, and selection -- and how they
+;; are specified in Lisp. In the process, we've learned quite a number
+;; of Lisp functions: progn, sleep-for, setq, while, car, cdr, if,
+;; string=
+;;
+;; In the next file, we'll look at how to write and call our own
+;; functions. Navigate to file tutorial-03.el or evaluate the
+;; following expression.
+
+(find-file "tutorial-03.el")
