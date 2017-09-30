@@ -16,6 +16,29 @@
 ;;
 ;;   http://ergoemacs.org/emacs/emacs.html
 ;;
+;; In this tutorial, we'll use notation like "M-r" to mean "hit
+;; Escape, then the r key". If this is unfamiliar, go read the
+;; University of Chicago tutorial down to "Files, Buffers and Windows"
+;; before continuing. It will explain the keystroke notation used
+;; here.
+;;
+;; We'll also use the notation "<FUNCTION-NAME>" to mean "do whatever
+;; you have to to run function FUNCTION-NAME." That might be hitting a
+;; keystroke sequence you have bound to the function or running
+;; execute-extended-command (I have it bound to M-x) and typing the
+;; name of the function. That is, <execute-extended-command> will open
+;; a prompt and let you type the name of a function to run.
+;;
+;; You can run Lisp forms in this file by selecting the form and doing
+;; <eval-region>. Doing this is called "evaluating the form". A Lisp
+;; form is a string in parentheses like the "Hello world" line below.
+;;
+;; Here's one way to evaluate the "Hello, world" form below:
+;;
+;;  - <set-mark> at the beginning of the "Hello, world" line (I would
+;;    type M-space to <set-mark>),
+;;  - navigate to the end of the line (C-e),
+;;  - and type M-x "eval-region".
 ;;
 ;; The result should be "Hello, world!" displayed in the message line
 ;; at the bottom of your window.
