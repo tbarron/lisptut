@@ -1,14 +1,21 @@
-;; This file is a tutorial for Emacs Lisp.
+;; This file is a tutorial for Emacs Lisp. To work through the
+;; tutorial, load it into Emacs and start reading.
 ;;
-;; You can run Lisp forms in it by highlighting a line and invoking
-;; the function eval-region. A Lisp form is a string in parentheses
-;; like the "Hello world" line below.
+;; This tutorial assumes some basic familiarity with Emacs itself and
+;; focuses on the Lisp language built into the Emacs engine. If you
+;; are brand new to Emacs, you'll probably get more out of some of the
+;; tutorials that introduce Emacs itself like the following:
 ;;
-;; Try it now. Select and run the "Hello, world" form below. That is,
+;;   http://www2.lib.uchicago.edu/keith/tcl-course/emacs-tutorial.html
 ;;
-;;  - type Escape Space at the beginning of the "Hello, world" line,
-;;  - navigate to the end of the line (\C-e),
-;;  - and type Escape, X, "eval-region".
+;;   http://www.jesshamrick.com/2012/09/10/absolute-beginners-guide-to-emacs/
+;;
+;;   http://www.tuxradar.com/content/emacs-tutorial-beginners
+;;
+;;   https://masteringemacs.org/article/beginners-guide-to-emacs
+;;
+;;   http://ergoemacs.org/emacs/emacs.html
+;;
 ;;
 ;; The result should be "Hello, world!" displayed in the message line
 ;; at the bottom of your window.
