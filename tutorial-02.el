@@ -43,20 +43,20 @@
 ;; code to cycle through the list to produce the count down. For
 ;; example:
 
-(setq count-list '("ten ..." "nine ..." "eight ..."
-                   "seven ..." "six ..." "five ..."
-                   "four ..." "three ..." "two ..."
-                   "one ..." "*** BOOM ***"))
-(setq sltm 2.8)
+(progn
+  (setq count-list '("ten ..." "nine ..." "eight ..."
+                     "seven ..." "six ..." "five ..."
+                     "four ..." "three ..." "two ..."
+                     "one ..." "*** BOOM ***"))
+  (setq sltm 2.8)
 
-(while (setq count (car count-list))
-  (setq count-list (cdr count-list))
-  (message "%s" count)
-  (sleep-for sltm)
-  (setq sltm (- sltm 0.2))
+  (while (setq count (car count-list))
+    (setq count-list (cdr count-list))
+    (message "%s" count)
+    (sleep-for sltm)
+    (setq sltm (- sltm 0.2))
+    )
 )
-
-(message "%s" (buffer-name))
 
 ;; This example introduces several new functions:
 ;;
