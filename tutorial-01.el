@@ -1,7 +1,7 @@
 ;; Emacs Lisp Tutorial 01: Introduction
 ;;
-;; This file is a tutorial for Emacs Lisp. To work through the
-;; tutorial, load it into Emacs and start reading.
+;; This file is the beginning of a tutorial for Emacs Lisp. To work
+;; through the tutorial, load it into Emacs and start reading.
 ;;
 ;; This tutorial assumes some basic familiarity with Emacs itself and
 ;; focuses on the Lisp language built into the Emacs engine. If you
@@ -34,11 +34,15 @@
 ;;
 ;; We'll also use the notation "<FUNCTION-NAME>" to mean "do whatever
 ;; you have to to run function FUNCTION-NAME." That might be hitting a
-;; keystroke sequence you have bound to the function or running
-;; execute-extended-command (normally it is bound to M-x) and typing
-;; the name of the function. That is, <execute-extended-command>
-;; (usually hitting Escape then X) will open a prompt and let you type
-;; the name of a function you want to run.
+;; keystroke sequence you have already bound to the function or
+;; running execute-extended-command (normally it is bound to M-x) and
+;; typing the name of the function. That is,
+;; <execute-extended-command> (usually hitting Escape then X) will
+;; open a prompt and let you type the name of a function you want to
+;; run.
+;;
+;; Of course, you can edit the contents of these files and I hope you
+;; will hack on the examples to try out ideas that occur to you.
 ;;
 ;; With this file open in Emacs, you can run the Lisp forms by
 ;; positioning the cursor after the final parenthesis and firing
