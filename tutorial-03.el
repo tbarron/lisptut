@@ -17,17 +17,21 @@
 ;;
 ;;  - the word "defun", followed by
 ;;  - the name of the function, followed by
-;;  - a list naming the arguments the function expects, followed by
+;;  - a list naming the arguments the function expects enclosed in
+;;    parentheses, followed by
 ;;  - an optional (but strongly recommended) string describing the
 ;;    function, followed by
 ;;  - the body of the function (with an implicit progn around it)
 ;;
 ;; Notice that the whole thing is enclosed in a pair of parens.
 ;;
-;; Earlier, we used <execute-extended-command> to run a function.
-;; Let's try that with hello.
+;; Earlier, we used <execute-extended-command> to run a function from
+;; the keyboard. We want to do that same thing with hello, but in Lisp
+;; code, the function to use is <command-execute>. Function
+;; <execute-extended-command> is intended only for interactive use.
+;; Evaluate the following:
 
-(execute-extended-command nil 'hello)
+(command-execute 'hello)
 
 ;; This puts us into the debugger with the message "‘hello’ is not a
 ;; valid command name". But we just defined it. Or defuned it.
@@ -47,14 +51,15 @@
 
 ;; and then evaluate hear-me
 
-(hear-me)
+(command-execute 'hear-me)
 
 ;; Some functions should be callable with <execute-extended-command>
-;; while others should perhaps not be exposed to direct user
-;; invocation. The (interactive) form gives you control over this
-;; aspect of your functions. Without (interactive), functions can
-;; still be bound to key sequences and called from other functions,
-;; they just aren't visible to <execute-extended-command>.
+;; (or <command-execute>, depending on the context) while others
+;; should perhaps not be exposed to direct user invocation. The
+;; (interactive) form gives you control over this aspect of your
+;; functions. Without (interactive), functions can still be bound to
+;; key sequences and called from other functions, they just aren't
+;; visible to <execute-extended-command>.
 ;;
 ;; == Arithmetic ==
 ;;
@@ -65,7 +70,7 @@
 
 (message "%d" (+ 2 2))
 
-;; Putting functions and arithmetic together, we can write a function
+;; Putting functions and arithmetic together, we can write functions
 ;; to compute mathematical structures. For example, the first ten
 ;; values of the Fibonacci sequence:
 
@@ -116,7 +121,9 @@
 ;; recently added values. So we have an if form that lets us tell
 ;; whether we're adding the first two 1's or a later value. We check
 ;; whether the length of the list is less than 2. If so, we're just
-;; adding 1 to the list ("cons 1 fibo-list").
+;; adding 1 to the beginning of the list ("cons 1 fibo-list", which
+;; returns a list consisting of its second argument -- normally a list
+;; -- with its first argument stuck on the front of it).
 ;;
 ;; Here we see a case of an if statement with some else forms. If the
 ;; length test fails because the list has two or more elements, we
@@ -125,13 +132,146 @@
 ;; "true" option).
 ;;
 ;; You might notice something odd about this list. We add the next
-;; value, not at the end of the list, but at the beginning.
+;; value, not at the end of the list, but at the beginning. The reason
+;; for this is that it's much easier to add and remove items at the
+;; front of a list rather at the tail. When we display it, it's easy
+;; to reverse the list first to put it in the order we normally expect
+;; to see it in.
 ;;
-;; == Keeping variables local ==
+;; == Local Variables ==
 ;;
 ;; You might notice that we named the variable holding the list in
-;; fibo10 "fibo-list" to associate it with the function since we just
-;; let it get created in the global symbol space where all the other
-;; Lisp symbols live.
+;; fibo10 "fibo-list". That was to associate it with the function
+;; since we just let it get created in the global symbol space where
+;; all the other Lisp symbols live. Can we make local variables in a
+;; function that disappear when the function stops running? Yes! Let's
+;; rewrite fibo10 to show how this is done.
+
+(defun fibo10 ()
+  "Compute and report the first ten elements of the fibonacci sequence"
+  (interactive)
+  (let ((fibo-list ()))
+    (while (< (length fibo-list) 10)
+      (if (< (length fibo-list) 2)
+          (setq fibo-list (cons 1 fibo-list))
+        (setq fibo-list (cons
+                         (+ (car fibo-list)
+                            (car (cdr fibo-list))) fibo-list))
+        (message "%S" (reverse fibo-list))
+        (sleep-for 1.0)))
+    (message "all done")))
+
+;; The let form uses its first argument to set variables, then
+;; evaluates the rest of its arguments with those newly bound
+;; variables in place. Essentially, we wrapped the entire body of the
+;; function in the let form. When control leaves the let form, the
+;; variables defined by its first argument go out of scope and
+;; disappear, which is just what we want a local variable to do.
+
+(fibo10)
+
+;; == With an argument ==
 ;;
+;; What if we want to generate some number of fibonacci sequence
+;; values other than 10? We want a function called fibo that accepts
+;; an argument and generates that many sequence values. Here's how
+;; that could work
+
+(defun fibo (howmany)
+  "Compute and report the first X elements of the fibonacci sequence"
+  (interactive)
+  (let ((ll ()))
+    (while (< (length ll) howmany)
+      (if (< (length ll) 2)
+          (setq ll (cons 1 ll))
+        (setq ll (cons (+ (car ll) (car (cdr ll))) ll))
+        (message "%S" (reverse ll))
+        (sleep-for 1.0)))
+    (message "all done")))
+
+(fibo 7)
+
+(fibo 13)
+
 ;; == Using recursion ==
+;;
+;; Recursion is a common techinque in lisp. This is where we have a
+;; function call itself. We can write fibo in terms of recursion
+
+(defun fibo (howmany)
+  "Compute the first <howmany> items of the fibonacci sequence"
+  (interactive)
+  (let (ll)
+    (if (<= howmany 1)
+        (list 1)
+      (if (<= howmany 2)
+          (cons 1 (fibo (- howmany 1)))
+        (setq ll (fibo (- howmany 1)))
+        (cons (+ (car ll) (car (cdr ll))) ll)))))
+
+(message "%s" (fibo 6))
+
+;; In this case, we've pulled the "message" call to display the result
+;; outside the fibo function so it's only called once, after all the
+;; work is done.
+
+;; Now let's write a function that actually operates on Emacs buffers.
+;; Often I want to cycle through all the buffers I'm working on
+;; (without having to hit all the system buffers like "*Messages*"
+;; along the way). Here's our start:
+
+(defun buffer-lru ()
+  "Jump to the least recently used non-system buffer"
+  (interactive)
+  (let ((bl (buffer-list)))
+    (while (< 0 (length bl))
+      ...)))
+
+;; The funnction buffer-list will return the list of currently active
+;; buffers (including the system ones) in the order visited with least
+;; recently used last.
+
+;; function buffer-lru -- go to the least recently used buffer
+
+(defun buffer-lru ()
+  "Jump to the least recently used non-system buffer"
+  (interactive)
+  (let ((bl (buffer-list))
+        buf
+        bname
+        lastbuf)
+    (while (< 0 (length bl))
+      ; take the first buffer in the list
+      (setq buf (car bl))
+      (setq bname (buffer-name buf))
+
+      ; drop leading whitespace
+      (while (string= (substring bname 0 1) " ")
+        (setq bname (substring bname 1 nil)))
+
+      ; skip system buffers (whose name begins with "*")
+      (if (not (string= (substring bname 0 1) "*"))
+          ; record the last seen user buffer
+          (setq lastbuf buf))
+
+      ; drop the first buffer from the list
+      (setq bl (cdr bl)))
+
+    ; switch to the last user buffer seen in the list
+    (switch-to-buffer lastbuf)))
+
+
+(debug-on-entry 'buffer-lru)
+(cancel-debug-on-entry 'buffer-lru)
+(global-set-key "\C-x\C-l" 'buffer-lru)
+(buffer-lru)
+(buffer-list)
+
+;; using emacs lisp for scripting
+
+;; how can a function manipulate its argument list? So, for example,
+;; I'd like to write a function called flash that does a message and
+;; then sleeps for a second.
+
+;; How do functions return values? How and when should one use the
+;; return function?
