@@ -38,10 +38,9 @@
 ;; learn about return values later on.
 ;;
 ;; The second control structure is ITERATION. The code above is a bit
-;; cumbersome. Our code could be more compact if we put the strings
-;; and wait times in a list. Then we could write a small amount of
-;; code to cycle through the list to produce the count down. For
-;; example:
+;; cumbersome. Our code could be more compact if we put the strings in
+;; a list. Then we could write a small amount of code to cycle through
+;; the list to produce the count down. For example:
 
 (progn
   (setq count-list '("ten ..." "nine ..." "eight ..."
@@ -60,7 +59,7 @@
 
 ;; This example introduces several new functions:
 ;;
-;; <setq> binds a symbol to a value so the next time we reference the
+;; <setq> binds a symbol to a value so the next time we use the
 ;; symbol, we'll get that value back. We used setq to to bind the
 ;; symbol "count-list" to the list of count down strings and the
 ;; symbol "sltm" to the initial sleep time.
