@@ -130,8 +130,8 @@
 ;; going on with just the minibuffer, especially if you need to report
 ;; several pieces of information in a row, since the minibuffer can
 ;; only show one message at a time. The *Messages* buffer shows the
-;; history so you can see all the messages that have been produced
-;; since Emacs started.
+;; message history so you can see all the messages that have been
+;; produced since Emacs started.
 ;;
 ;; In this file, we've started learning how to communicate with Emacs
 ;; Lisp, to get it to do our bidding and report back to us about
