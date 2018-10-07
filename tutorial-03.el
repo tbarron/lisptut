@@ -57,7 +57,8 @@
 ;; Well, there's another bit of the defun syntax that I haven't told
 ;; you about. Right after the description string, you can optionally
 ;; include an expression to make the function interactive so
-;; execute-extended-command can see it. Try this:
+;; <execute-extended-command> and <command-execute> and the keystroke
+;; processor can see it. Try this:
 
 (defun hear-me ()
   "Test interactive"
