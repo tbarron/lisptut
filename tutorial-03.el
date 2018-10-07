@@ -26,17 +26,31 @@
 ;; Notice that the whole thing is enclosed in a pair of parens, making
 ;; it a Lisp s-expression.
 ;;
-;; Earlier, we used <execute-extended-command> to run a function from
-;; the keyboard. We want to do that same thing with hello, but in Lisp
-;; code, the function to use is <command-execute>. Function
-;; <execute-extended-command> is intended only for interactive use.
-;; Evaluate the following:
+;; As you saw above, you can run the function by evaluating the
+;; "(hello)" form (i.e., typing C-xC-e with the cursor positioned
+;; after the last paren)
+;;
+;; Now try running <hello> with execute-extended-command. That is,
+;; type M-x, then type 'hello' in response to the M-x prompt and press
+;; ENTER.
+;;
+;; You should see "[No match]" appear in the message area after the
+;; 'hello' that you typed. You can type C-g to cancel the command
+;; prompt and return to the buffer.
+;;
+;; So M-x didn't work. What else can we try? Well, M-x calls
+;; <execute-extended-command>, which always prompts for the name of
+;; the function or command to run. To run a function or command from
+;; inside Lisp, we can pass it to <command-execute>. Below, you'll
+;; find a form set up to do that. Try evaluating it now.
 
 (command-execute 'hello)
 
-;; This puts us into the debugger with the message "‘hello’ is not a
-;; valid command name". But we just defined it. Or defuned it.
-;; Whatever. Why isn't Lisp running it?
+;; This generates the error message
+;;
+;;     Wrong type argument: commandp, hello
+;;
+;; in the message area. What does that mean?
 ;;
 ;; == Interactive functions ==
 ;;
