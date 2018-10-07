@@ -119,8 +119,19 @@
 ;; argument is skipped and the third and following arguments, if any,
 ;; are evaluated.
 ;;
-;; This example also uses <string=>, which tests whether two strings
-;; have identical contents.
+;; This example also uses <string=>, which returns 't if the two
+;; strings being compared have identical contents.
+;;
+;; You may be thinking, "Okay, I can do multiple things in the else
+;; branch, but what if I want to do more than one thing in the true
+;; side?" You can use <progn> with <if> to execute a series of forms
+;; on the true side of the <if>.
+;;
+;; Also, you may notice that after displaying each of the items from
+;; count-list, the last thing that shows up in the message area is
+;; 'nil'. That's not in the list. Why is it displayed? Take a moment
+;; and see if you can answer that question before reading the next
+;; paragraph.
 ;;
 ;; In this file, we have looked at the three basic control structures
 ;; of software -- sequence, iteration, and selection -- and how they
