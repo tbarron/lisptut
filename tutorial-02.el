@@ -74,9 +74,9 @@
 ;; right after calling <car>, we use <cdr> to update count-list with
 ;; the list minus the first element.
 ;;
-;; <-> subtracts its second argument from the first. Since sltm
-;; contains the length of time we just slept for, the last line will
-;; reduce the sleep time by another .2 seconds.
+;; <-> in "(- sltm 0.2)" subtracts its second argument from the first.
+;; Since sltm contains the length of time we just slept for, the last
+;; line will reduce the sleep time by .2 seconds each time we run it.
 ;;
 ;; SELECTION, the third control structure provides for following
 ;; different pathways of control.
