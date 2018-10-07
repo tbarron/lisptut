@@ -72,9 +72,10 @@
 ;; (or <command-execute>, depending on the context) while others
 ;; should perhaps not be exposed to direct user invocation. The
 ;; (interactive) form gives you control over this aspect of your
-;; functions. Without (interactive), functions can still be bound to
-;; key sequences and called from other functions, they just aren't
-;; visible to <execute-extended-command>.
+;; functions. Without (interactive), functions can be called
+;; programmatically, but cannot be called with
+;; <execute-extended-command>, <command-execute>, or bound to key
+;; sequences.
 ;;
 ;; == Arithmetic ==
 ;;
