@@ -21,9 +21,10 @@
 ;;    parentheses, followed by
 ;;  - an optional (but strongly recommended) string describing the
 ;;    function, followed by
-;;  - the body of the function (with an implicit progn around it)
+;;  - the body of the function (with an implicit <progn> around it)
 ;;
-;; Notice that the whole thing is enclosed in a pair of parens.
+;; Notice that the whole thing is enclosed in a pair of parens, making
+;; it a Lisp s-expression.
 ;;
 ;; Earlier, we used <execute-extended-command> to run a function from
 ;; the keyboard. We want to do that same thing with hello, but in Lisp
