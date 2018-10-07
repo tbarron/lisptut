@@ -30,12 +30,12 @@
 ;; That tutorial leans toward providing context and, in doing so,
 ;; sometimes makes it difficult for me to find what I'm looking for.
 ;; This tutorial aims to be a bit more direct and practical, providing
-;; useful information as early as possible.
+;; useful Lisp-oriented information as early as possible.
 ;;
 ;; We'll also use the notation "<FUNCTION-NAME>" to mean "do whatever
 ;; you have to to run function FUNCTION-NAME." That might be hitting a
 ;; keystroke sequence you have already bound to the function or
-;; running execute-extended-command (normally it is bound to M-x) and
+;; running execute-extended-command (normally bound to M-x) and
 ;; typing the name of the function. That is,
 ;; <execute-extended-command> (usually hitting Escape then X) will
 ;; open a prompt and let you type the name of a function you want to
@@ -66,10 +66,10 @@
 ;;
 ;; Typing "eval-last-sexp" every time we want to run something is
 ;; going to get tiresome pretty quickly. We can bind the function to a
-;; keystroke to make the process easier. Evaluate the following form
-;; (i.e., position after the last paren and <eval-last-sexp> again).
-;; After that, you'll be able to <eval-last-sexp> by just typing the
-;; C-xC-e keystroke sequence.
+;; keystroke sequence to make the process easier. Evaluate the
+;; following form (i.e., position after the last paren and
+;; <eval-last-sexp> again). After that, you'll be able to
+;; <eval-last-sexp> by just typing the C-xC-e keystroke sequence.
 
 (global-set-key "\C-x\C-e" 'eval-last-sexp)
 
