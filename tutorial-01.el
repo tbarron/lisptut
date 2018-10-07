@@ -18,6 +18,12 @@
 ;;
 ;;   http://ergoemacs.org/emacs/emacs.html
 ;;
+;; In this tutorial, we'll use notation like "M-r" to mean "hit
+;; Escape, then the r key". If this is unfamiliar, go read the
+;; University of Chicago tutorial (the first one in the list above)
+;; down to "Files, Buffers and Windows" before continuing. It will
+;; explain the keystroke notation used here.
+;;
 ;; If you're interested in Emacs Lisp, you may also be interested in
 ;; the tutorial for ELisp that comes with Emacs. To access it, do
 ;; <info> (usually M-h i) and select "Emacs Lisp Intro" from the menu.
@@ -25,12 +31,6 @@
 ;; sometimes makes it difficult for me to find what I'm looking for.
 ;; This tutorial aims to be a bit more direct and practical, providing
 ;; useful information as early as possible.
-;;
-;; In this tutorial, we'll use notation like "M-r" to mean "hit
-;; Escape, then the r key". If this is unfamiliar, go read the
-;; University of Chicago tutorial down to "Files, Buffers and Windows"
-;; before continuing. It will explain the keystroke notation used
-;; here.
 ;;
 ;; We'll also use the notation "<FUNCTION-NAME>" to mean "do whatever
 ;; you have to to run function FUNCTION-NAME." That might be hitting a
