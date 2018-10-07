@@ -155,6 +155,11 @@
 ;; to reverse the list first to put it in the order we normally expect
 ;; to see it in.
 ;;
+;; Also, notice that the first time we call <message>, the list
+;; already contains three elements -- 1, 1, and 2. What would you have
+;; to do to display the list after adding each of the first two
+;; elements?
+;;
 ;; == Local Variables ==
 ;;
 ;; You might notice that we named the variable holding the list in
